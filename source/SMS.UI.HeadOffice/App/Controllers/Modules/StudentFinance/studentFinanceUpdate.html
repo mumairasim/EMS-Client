@@ -1,0 +1,69 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Update Student Finance</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-8">
+                        <div class="position-relative row form-group">
+                            <div class="col-sm-6">
+                                <label for="studentfirstname" class="col-form-label">Student First Name</label>
+                                <input name="studentfirstname" id="studentfirstname" placeholder="Student First Name" type="text" class="form-control" ng-Model="financeRecord.FirstName" disabled>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="studentlastname" class="col-form-label">Student Last Name</label>
+                                <input name="studentlastname" id="studentlastname" placeholder="Student Last Name" type="text" class="form-control" ng-Model="financeRecord.LastName" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="studentRegno" class="col-form-label">Student Reg No.</label>
+                        <input name="studentRegno" id="studentRegno" placeholder="studentRegno" type="text" class="form-control" ng-Model="financeRecord.RegistrationNumber" disabled>
+                    </div>
+                </div>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="month" class="col-form-label">Month</label>
+                        <input class="form-control" ng-model="financeRecord.FeeMonth" disabled />
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-form-label">Year</label>
+                        <input class="form-control" ng-model="financeRecord.FeeYear" disabled />
+                    </div>
+                </div>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="fee" class="col-form-label">Admission Fee</label>
+                        <input class="form-control" ng-model="financeRecord.AdmissionFee" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input ng-model="financeRecord.IsAdmissionFee" type="checkbox" class="input-sm checkboxLarge" />
+                    </div>
+                </div>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="fee" class="col-form-label">Monthly Fee</label>
+                        <input class="form-control" ng-model="financeRecord.Fee" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-form-label" style="font-size: large">Fee Deposit </label>
+                        <input ng-Model="financeRecord.FeeSubmitted" type="checkbox" class="input-sm checkboxLarge" />
+
+                    </div>
+                </div>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="month" class="col-form-label">Arears</label>
+                        <input class="form-control" ng-model="financeRecord.Arears" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="Save()">Save</button>
+                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

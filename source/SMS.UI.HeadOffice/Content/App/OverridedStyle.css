@@ -1,0 +1,185 @@
+﻿.containerRegister {
+    padding: 100px 55px 55px 55px;
+}
+
+.containerCreate {
+    margin: 25px 25px 25px 300px;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    background-color: white;
+}
+
+.containerBase {
+    margin: 25px 25px 25px 300px;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    background-color: white;
+}
+
+.containerDashboard {
+    margin: 25px 25px 25px 300px;
+    padding: 20px 20px 20px 20px;
+}
+
+.pointercollapsable {
+    cursor: pointer;
+}
+
+.pointerSet {
+    cursor: context-menu;
+}
+
+.searchField:focus {
+    box-shadow: none;
+}
+
+.searchButton {
+    border: 1px solid #ced4da;
+    outline: none;
+}
+
+    .searchButton:focus {
+        border-color: #a9bcee;
+        outline: none;
+    }
+
+.navbarshadow {
+    box-shadow: 1px 1px #ced4da;
+    background-color: white;
+}
+
+.navbarstyle {
+    flex-direction: row;
+}
+
+.navbarstyleli {
+    padding-right: 5px;
+}
+
+.please-wait {
+    position: fixed;
+    z-index: 5000;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    display: none;
+}
+
+    .please-wait .please-wait-container {
+        width: 100%;
+        height: 100%;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .please-wait .please-wait-message {
+        border: 2px solid rgba(108, 220, 248, 0.75);
+        border-radius: 2px;
+        background-color: #fff;
+        box-shadow: 0 0 10px #92DDFB;
+        text-align: center;
+        padding: 2em;
+        min-width: 300px;
+    }
+
+        .please-wait .please-wait-message p {
+            font-size: 1.5em;
+            margin-top: 0.5em;
+        }
+
+        .please-wait .please-wait-message img {
+            width: 80px;
+            height: auto;
+            animation: ghoom 3s linear infinite;
+        }
+
+.paginationLocalClass {
+    margin-top: -30px;
+}
+
+.recordsCount {
+    font-size: 11pt;
+}
+
+    .recordsCount > span {
+        color: #0056b3;
+    }
+
+.tableCenterAllign {
+    text-align: center;
+}
+
+.radioButtonSize {
+    height: 20px;
+    width: 20px;
+}
+.checkboxSize {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+.checkboxLarge {
+    height: 50px;
+    width: 50px;
+    margin: 20px;
+}
+.block {
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+
+}
+
+.infoMessage {
+    border-radius: 5px;
+    padding: 10px 0 0 0;
+    text-align: center;
+}
+
+.successMessege {
+    border: 1px solid #00B03B;
+    color: #00B03B;
+}
+
+.failureMessege {
+    border: 1px solid #f97070;
+    color: #f97070;
+}
+
+@media (max-width: 1350px) {
+    .containerCreate {
+        margin: 55px 55px 55px 45px;
+    }
+}
+.mendatory {
+    color: red;
+}
+
+@media (max-width: 992px) {
+    .containerCreate {
+        margin: 55px 55px 55px 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .containerCreate {
+        margin: 55px 55px 55px 70px;
+    }
+}
+
+@media (max-width: 576px) {
+    .containerCreate {
+        margin: 55px 55px 55px 55px;
+    }
+}
+.required:before {
+    content: "* ";
+    color: red;
+}

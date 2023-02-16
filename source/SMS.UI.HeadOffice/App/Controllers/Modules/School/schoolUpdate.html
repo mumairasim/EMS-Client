@@ -1,0 +1,27 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Update School</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <!--<div class="col-sm-9" style="border-style: solid; border-width: medium; width: 50px; height: 50px; border-color: transparent;">
+            </div>-->
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="name" class="col-form-label">Name</label>
+                        <input name="name" id="name" placeholder="Name" type="text" class="form-control" ng-Model="SchoolModel.Name">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="location" class="col-form-label">Location</label>
+                        <input name="location" id="loacation" placeholder="Location" type="text" class="form-control" ng-Model="SchoolModel.Location">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="SchoolUpdate()">Update</button>
+                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

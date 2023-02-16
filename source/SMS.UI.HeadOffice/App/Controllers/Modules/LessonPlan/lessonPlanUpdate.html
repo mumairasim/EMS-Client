@@ -1,0 +1,43 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Update Lesson PLan</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <div class="col-sm-4">
+                <label for="name" class="col-form-label">Lesson Plan Name</label>
+                <input name="name" id="name" placeholder="name" type="text" class="form-control" ng-model="LessonPlanModel.Name" pattern="^[a-zA-Z0-9 ]*$" ng-pattern-restrict>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <label for="text" class="col-form-label">Lesson Plan Text</label>
+                <textarea name="text" id="text" placeholder="enter yor text here" type="text" rows="5" class="form-control" ng-model="LessonPlanModel.Text" pattern="^[a-zA-Z0-9 ]*$" ng-pattern-restrict></textarea>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-4">
+                        <label for="fromdate" class="col-form-label">From Date</label>
+                        <input name="fromdate" id="fromdate" placeholder="fromdate" type="date" class="form-control" ng-Model="LessonPlanModel.FromDate">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="todate" class="col-form-label">To Date</label>
+                        <input name="todate" id="todate" placeholder="todate" type="date" class="form-control" ng-Model="LessonPlanModel.ToDate">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="school" class="col-form-label">School</label>
+                        <select name="school" id="school" class="form-control" ng-Model="LessonPlanModel.School"
+                                ng-options="School.Name for School in Schools  track by School.Id">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="LessonPlanUpdate()">Submit</button>
+                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

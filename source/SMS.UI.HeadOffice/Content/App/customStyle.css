@@ -1,0 +1,146 @@
+﻿.no-error {
+    color: green;
+}
+
+.display-load {
+    display: block;
+}
+
+.hide-load {
+    display: none;
+}
+
+growl-notifications {
+    position: fixed;
+    top: 150px;
+    right: 0px;
+    z-index: 1000;
+}
+
+growl-notification div {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+growl-notifications growl-notification {
+    background: #fff;
+    padding: 15px 30px;
+    width: 200px;
+    display: block;
+    border-radius: 1px;
+    border-left: 4px solid #3cb371;
+    margin-top: 15px;
+    box-shadow: 0 0 2px #ccc;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.growlerror {
+    border-left: 4px solid #d9534f;
+}
+
+growl-notification.fading.ng-move {
+    opacity: 0;
+    -webkit-transition: 1s linear all; /* Safari/Chrome */
+    transition: 1s linear all; /* All other modern browsers and IE10+ */
+}
+
+    growl-notification.fading.ng-move.ng-move-active {
+        opacity: 1;
+    }
+
+growl-notification.fading.ng-leave {
+    opacity: 1;
+    -webkit-transition: 1s linear all; /* Safari/Chrome */
+    transition: 1s linear all; /* All other modern browsers and IE10+ */
+}
+
+    growl-notification.fading.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+
+.sort-selection {
+    text-decoration: none;
+    color: #262626;
+    background-color: #f5f5f5;
+}
+
+.removeborders {
+    border: none;
+}
+
+.widthset {
+    max-width: 500px;
+}
+
+/*.book-image {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  width:100%;
+  height:auto;
+}*/
+.defaultcursor {
+    cursor: default;
+}
+
+.handcursor {
+    cursor: pointer;
+}
+
+.tabfocus:focus {
+    outline: 0px solid transparent;
+}
+
+.locationModel {
+    overflow: auto;
+    max-height: 300px;
+}
+
+.onhover {
+    background-color: beige;
+}
+
+.select {
+    background-color: beige;
+}
+
+.disabledDiv {
+    pointer-events: none;
+}
+
+/*input[type='file'] {
+    display: none;
+}*/
+
+.wrapping {
+    white-space: pre-wrap !important;
+}
+
+.fullwidth {
+    width: 100% !important;
+}
+
+.allignment {
+    text-align: left !important;
+}
+
+.vertical-allignment {
+    vertical-align: top;
+}
+
+.margin {
+    margin-top: -15px !important;
+}
+
+.bookhistoryheight {
+    min-height: 30px !important;
+}
+
+.descriptioerrormessage {
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+}

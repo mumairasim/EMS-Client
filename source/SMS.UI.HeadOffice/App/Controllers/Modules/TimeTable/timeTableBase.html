@@ -1,0 +1,43 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Time Table</h5>
+    <div class="position-relative row form-group">
+        <div class="col-sm-6">
+            <label for="school" class="col-form-label">School</label>
+            <select name="school" id="school" class="form-control" ng-change="GetClasses()" ng-Model="TimeTable.School"
+                    ng-options="School.Name for School in Schools  track by School.Id">
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <label for="class" class="col-form-label">Class</label>
+            <select name="class" id="class" class="form-control" ng-Model="TimeTable.Class"
+                    ng-options="Class.ClassName for Class in Classes  track by Class.Id">
+            </select>
+        </div>
+    </div>
+    <div class="position-relative row form-group">
+        <div class="offset-11 col-sm-2">
+            <input type="button" class="btn btn-primary" value="Filter" ng-click="GetTimeTables()"/>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Time Table Name</th>
+                <th>School</th>
+                <th>Class</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="timeTable in TimeTableList.TimeTables">
+                <td>{{timeTable.TimeTableName}}</td>
+                <td>{{timeTable.School.Name}}</td>
+                <td>{{timeTable.Class.ClassName}}</td>
+                <td>
+                    <a href="#!/timeTableView?Id={{timeTable.Id}}"><i class="fa fa-search fa-fw"></i> View</a>
+                    <a href="" data-toggle="modal" data-target="#confirmationModal" ng-click="ConfirmDelete(timeTable.Id)"><i class="fa fa-trash fa-fw"></i> Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

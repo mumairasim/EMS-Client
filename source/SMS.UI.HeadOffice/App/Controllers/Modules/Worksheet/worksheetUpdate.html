@@ -1,0 +1,39 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Update Worksheet</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <!--<div class="col-sm-9" style="border-style: solid; border-width: medium; width: 50px; height: 50px; border-color: transparent;">
+            </div>-->
+
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="text" class="col-form-label">Text</label>
+                        <input name="text" id="text" placeholder="text" type="text" class="form-control" ng-Model="WorksheetModel.Text">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="fordate" class="col-form-label">ForDate</label>
+                        <input name="fordate" id="fordate" placeholder="fordate" type="date" class="form-control" ng-Model="WorksheetModel.ForDate">
+                    </div>
+                </div>
+
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="employee" class="col-form-label">Employee</label>
+                        <select name="employee" id="employee" class="form-control" ng-Model="WorksheetModel.Employee"
+                                ng-options="Employee.Person.FirstName for Employee in Employees track by Employee.Id">
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative row form-group">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="WorksheetUpdate()">Update</button>
+                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

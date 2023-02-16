@@ -1,0 +1,17 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Update Designation</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <div class="col-sm-6">
+                <label for="name" class="col-form-label">Designation Name</label>
+                <input name="name" id="name" placeholder="name" type="text" class="form-control" ng-model="DesignationModel.Name" pattern="^[a-zA-Z0-9 ]*$" ng-pattern-restrict>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-6 offset-sm-4">
+                <button class="btn btn-primary" ng-click="DesignationUpdate()">Submit</button>
+                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

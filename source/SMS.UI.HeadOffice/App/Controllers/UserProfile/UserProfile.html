@@ -1,0 +1,92 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">User Profile</h5>
+    <form name="userForm" class="">
+        <div class="position-relative row form-group">
+            <div class="col-sm-3">
+                <img src="{{ImageBase + UserModel.Image}}" ng-show="imageLoaded" class=" img-circle img-thumbnail ng-hide" alt="avatar">
+
+                <img src="/Images/avatar_2x.png" ng-hide="imageLoaded" class=" img-circle img-thumbnail ng-hide" alt="avatar" />
+                <div style="margin-top: 10px;">
+                    <input type="file" name="file" onchange="angular.element(this).scope().SelectFileForUpload(this.files)" onerror="this.onerror=null;this.src='../../images/avatar_2x.png';" />
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative row form-group">
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="Username" class="col-form-label">Username</label>
+                        <input name="Username" ng-disabled="true" id="Username" placeholder="Username" type="text" class="form-control" ng-Model="UserModel.UserName">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="Email" class="col-form-label">Email</label>
+                        <input name="Email" id="Email" placeholder="Email" type="text" class="form-control" ng-Model="UserModel.Email">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="position-relative row form-group">
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+
+                    <div class="col-sm-6">
+                        <label for="firstname" class="col-form-label">First Name</label>
+                        <input name="firstname" id="firstname" placeholder="First Name" type="text" class="form-control" ng-Model="UserModel.FirstName">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="lastname" class="col-form-label">Last Name</label>
+                        <input name="lastname" id="lastname" placeholder="lastname" type="text" class="form-control" ng-Model="UserModel.LastName">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative row form-group">
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+
+                    <div class="col-sm-6">
+                        <label for="phone" class="col-form-label">Phone #</label>
+                        <input name="phone" id="phone" placeholder="Phone" type="text" class="form-control" ng-Model="UserModel.Phone">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="joiningDate" class="col-form-label">Joined Since</label>
+                        <input name="joiningDate" id="joiningDate" placeholder="Joining Date" type="date" ng-disabled="true" class="form-control" ng-Model="UserModel.CreationDate ">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative row form-group">
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-12">
+                        <label for="permanentAddr" class="col-form-label">Permanent Address</label>
+                        <textarea name="permanentAddr" id="permanentAddr" placeholder="Permanent Address" type="text" class="form-control" ng-Model="UserModel.PermanentAddress"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative row form-group">
+            <div class="col-sm-3">
+                <a href="#!/changePassword">Change Password</a>
+            </div>
+        </div>
+
+        <div class="position-relative row form-group">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="UserUpdate()">Update</button>
+                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+

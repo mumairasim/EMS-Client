@@ -1,0 +1,22 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">View Time Table</h5>
+    <div class="position-relative row form-group">
+        <div class="col-sm-12">
+            <div ng-repeat="(key, value) in TimeTable.TimeTableDetails">
+                <table class="table table-bordered table-responsive">
+                    <tr>
+                        <th style="color: #3F6AD8">{{value.Day}}</th>
+                        <td ng-repeat="col in value.Periods">
+                            <span><b>Course: </b></span><label>{{ col.Course.CourseName }}</label><hr />
+                            <span><b>Time: </b></span><label>{{ col.StartTime | date:'hh:mm' }} - {{col.EndTime | date:'hh:mm'  }}</label><hr />
+                            <span><b>Teacher: </b></span><label>{{ col.Employee.Person.FirstName }} {{ col.Employee.Person.LastName }}</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="offset-sm-11 col-sm-2">
+                <button class="btn btn-danger" ng-click="Cancel()">Return</button>
+            </div>
+        </div>
+    </div>
+</div>

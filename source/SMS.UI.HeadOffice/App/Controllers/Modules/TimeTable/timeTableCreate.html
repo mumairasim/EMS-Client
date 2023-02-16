@@ -1,0 +1,136 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Create Time Table</h5>
+    <div class="position-relative row form-group">
+        <div class="col-sm-4">
+            <label for="school" class="col-form-label">School</label>
+            <select name="school" id="school" class="form-control" ng-change="GetClasses()" ng-Model="TimeTable.School"
+                    ng-options="School.Name for School in Schools  track by School.Id">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <label for="class" class="col-form-label">Class</label>
+            <select name="class" id="class" class="form-control" ng-Model="TimeTable.Class"
+                    ng-options="Class.ClassName for Class in Classes  track by Class.Id">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <label for="timetableName" class="col-form-label">Time Table Name</label>
+            <input name="timetableName" id="timetableName" type="text" class="form-control" ng-Model="TimeTable.TimeTableName" />
+        </div>
+    </div>
+    <div class="position-relative row form-group">
+        <div class="col-sm-12">
+            <div class="position-relative row form-group">
+                <div class="col-sm-3">
+                    <div class="position-relative row form-group">
+                        <label class="col-form-label">Monday</label>
+                        <input type="checkbox" class="checkboxSize" ng-model="monday" ng-change="PopulateRows()" />
+                    </div>
+                    <div class="position-relative row form-group">
+                        <label class="col-form-label">Friday</label>
+                        <input type="checkbox" class="checkboxSize" ng-model="friday" ng-change="PopulateRows()" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="position-relative row form-group">
+                        <label class="col-form-label">Tuesday</label>
+                        <input type="checkbox" class="checkboxSize" ng-model="tuesday" ng-change="PopulateRows()" />
+                    </div>
+                    <div class="position-relative row form-group">
+                        <label class="col-form-label">Saturday</label>
+                        <input type="checkbox" class="checkboxSize" ng-model="saturday" ng-change="PopulateRows()" />
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="position-relative row form-group">
+                        <label class="col-form-label">Wednesday</label>
+                        <input type="checkbox" class="checkboxSize" ng-model="wednesday" ng-change="PopulateRows()" />
+                    </div>
+                    <div class="position-relative row form-group">
+                        <label class="col-form-label">Sunday</label>
+                        <input type="checkbox" class="checkboxSize" ng-model="sunday" ng-change="PopulateRows()" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="position-relative row form-group">
+                        <label class="col-form-label">Thursday</label>
+                        <input type="checkbox" class="checkboxSize" ng-model="thursday" ng-change="PopulateRows()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-hide="TimeTable.TimeTableDetails.length < 1">
+        <form>
+            <div class="position-relative row form-group">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+                        <h5 class="card-title fs-15 text-center">Add Periods</h5>
+                    </div>
+                    <div class="position-relative row form-group">
+                        <div class="col-sm-6">
+                            <label for="course" class="col-form-label">Course</label>
+                            <select name="course" id="course" class="form-control" ng-Model="Course"
+                                    ng-options="Course.CourseName for Course in Courses  track by Course.Id">
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="teacher" class="col-form-label">Teacher</label>
+                            <select name="teacher" id="teacher" class="form-control" ng-Model="Employee"
+                                    ng-options="Employee.Person.FirstName +' '+ Employee.Person.LastName for Employee in Employees  track by Employee.Id">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="position-relative row form-group">
+                        <div class="col-sm-3">
+                            <label for="startTime" class="col-form-label">Start Time</label>
+                            <input name="startTime" id="startTime" placeholder="name" type="time" class="form-control" ng-model="StartTime">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="endTime" class="col-form-label">End Time</label>
+                            <input name="endTime" id="endTime" placeholder="name" type="time" class="form-control" ng-model="EndTime">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="periodDay" class="col-form-label">Day</label>
+                            <select name="periodDay" id="periodDay" class="form-control" ng-model="SelectedDay" ng-options="Details.Day for Details in TimeTable.TimeTableDetails"></select>
+                            <!--<select name="periodDay" ng-model="SelectedDay">
+                                <option ng-repeat="Details in TimeTable.TimeTableDetails">{{Details.Day}}</option>
+                            </select>-->
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-primary" ng-click="AddPeriod()">Add Period</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <h5 class="card-title fs-25 text-center">Time Table View</h5>
+            </div>
+            <div class="col-sm-12">
+                <div ng-repeat="(key, value) in TimeTable.TimeTableDetails">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>{{value.Day}}</th>
+                            <td ng-repeat="col in value.Periods">
+                                <span><b>Course: </b></span><label>{{ col.Course.CourseName }}</label><hr />
+                                <span><b>Time: </b></span><label>{{ col.StartTime | date:'hh:mm' }} - {{col.EndTime | date:'hh:mm'  }}</label><hr />
+                                <span><b>Teacher: </b></span><label>{{ col.Employee.Person.FirstName }} {{ col.Employee.Person.LastName }}</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary" ng-click="TimeTableCreate()">Create Time Table</button>
+                </div>
+                <!--<table class="table table-striped table-bordered">
+                    <tr ng-repeat="row in boardArr">
+                        <td ng-repeat="col in row">{{ col }} </td>
+                    </tr>
+                </table>-->
+            </div>
+        </div>
+    </div>
+</div>

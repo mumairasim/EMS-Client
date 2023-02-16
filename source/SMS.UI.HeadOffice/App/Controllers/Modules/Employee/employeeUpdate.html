@@ -1,0 +1,207 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Update Employee</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <div class="col-sm-9">
+                <h3 class="card-title fs-20 text-center">Employee Information</h3>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="firstname" class="col-form-label">Firstname</label>
+                        <input name="firstname" id="firstname" placeholder="firstname" type="text" class="form-control" ng-model="EmployeeModel.Person.FirstName" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="lastname" class="col-form-label">Lastname</label>
+                        <input name="lastname" id="lastname" placeholder="lastname" type="text" class="form-control" ng-model="EmployeeModel.Person.LastName" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                </div>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-3">
+                        <label for="cnic" class="col-form-label">
+                            B.Form
+                            <a href="#" data-toggle="tooltip" title="Only numbers and spaces are not allowed" data-placement="top"><i class="metismenu-icon pe-7s-info"></i></a>
+                        </label>
+                        <input name="cnic" id="cnic" placeholder="cnic/b.form" type="text" class="form-control" ng-model="EmployeeModel.Person.Cnic" pattern="^[0-9]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="phone" class="col-form-label">
+                            Phone
+                            <a href="#" data-toggle="tooltip" title="Only numbers and spaces are not allowed" data-placement="top"><i class="metismenu-icon pe-7s-info"></i></a>
+                        </label>
+                        <input name="phone" id="phone" placeholder="phone" type="text" class="form-control" ng-model="EmployeeModel.Person.Phone" pattern="^[0-9]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="nationality" class="col-form-label">Nationality</label>
+                        <input name="nationality" id="nationality" placeholder="Nationality" type="text" class="form-control" ng-model="EmployeeModel.Person.Nationality" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="religion" class="col-form-label">Religion</label>
+                        <input name="religion" id="religion" placeholder="religion" type="text" class="form-control" ng-model="EmployeeModel.Person.Religion" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <!--<img class=" img-circle img-thumbnail" ng-src="data:image/JPEG;base64,{{StudentModel.Image.ImageFile}}" alt="avatar">-->
+                <img class=" img-circle img-thumbnail" ngf-src="EmployeeModel.Image.ImageFile" alt="avatar" onerror="this.onerror=null;this.src='../../images/avatar_2x.png';">
+                <div style="margin-top: 10px;">
+                    <input type="file" id="file" class="text-center center-block" ngf-change="SelectFileForUpload($files)" ngf-select ng-model="EmployeeModel.Image.ImageFile" name="attachement" accept="image/png, image/jpeg, image/jpg, application/msword, application/vnd.ms-excel, application/pdf " />
+                    <!--<input type="file" class="text-center center-block" onchange="angular.element(this).scope().SelectFileForUpload(this.files)">-->
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+
+            <div class="col-sm-4">
+                <label for="age" class="col-form-label">Age</label>
+                <input name="age" id="age" placeholder="age" type="text" disabled class="form-control" ng-Model="EmployeeModel.Person.Age">
+            </div>
+            <div class="col-sm-4">
+                <label for="dob" class="col-form-label">Date of Birth</label>
+                <input name="dob" id="dob" placeholder="dob" type="date" class="form-control" ng-Model="EmployeeModel.Person.DOB">
+            </div>
+            <div class="col-sm-4">
+                <label for="gender" class="col-form-label">Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male" ng-Click="AssignGender(1)">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" ng-Click="AssignGender(2)">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other" ng-Click="AssignGender(0)">
+                <label for="other">Other</label>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-4">
+                <label for="school" class="col-form-label">School</label>
+                <select name="school" id="school" class="form-control" ng-Model="EmployeeModel.School"
+                        ng-options="School.Name for School in Schools  track by School.Id">
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <label for="designation" class="col-form-label">Designation</label>
+                <select name="designation" id="designation" class="form-control" ng-Model="EmployeeModel.Designation"
+                        ng-options="Designation.Name for Designation in Designations track by Designation.Id">
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <label for="city" class="col-form-label">City</label>
+                <input name="city" id="city" placeholder="city" type="text" class="form-control" ng-Model="EmployeeModel.Person.City">
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <label for="presentaddress" class="col-form-label">Present Address</label>
+                <textarea name="presentaddress" id="presentaddress" placeholder="present address" type="text" rows="3" class="form-control" ng-model="EmployeeModel.Person.PresentAddress"></textarea>
+            </div>
+            <div class="col-sm-12">
+                <label for="permanentaddress" class="col-form-label">Permanent Address</label>
+                <textarea name="permanentaddress" id="permanentaddress" placeholder="permanent address" type="text" rows="3" class="form-control" ng-model="EmployeeModel.Person.PermanentAddress"></textarea>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <h3 class="card-title fs-20 text-center">Parent/Guardian Information</h3>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="name" class="col-form-label">Parent/Guardian Name</label>
+                        <input name="name" id="name" placeholder="name" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentName" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="cnic" class="col-form-label">CNIC</label>
+                        <input name="cnic" id="cnic" placeholder="cnic" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentCnic" pattern="^[0-9]*$" ng-pattern-restrict>
+                    </div>
+                </div>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="relation" class="col-form-label">Relation</label>
+                        <input name="relation" id="relation" placeholder="relation" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentRelation" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="occupation" class="col-form-label">Occupation</label>
+                        <input name="occupation" id="occupation" placeholder="occupation" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentOccupation" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                </div>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="highesteducation" class="col-form-label">Highest Education</label>
+                        <input name="highesteducation" id="highesteducation" placeholder="highest education" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentHighestEducation">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="nationality" class="col-form-label">Nationality</label>
+                        <input name="nationality" id="nationality" placeholder="nationality" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentNationality" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <label for="email" class="col-form-label">Email</label>
+                <textarea name="email" id="email" placeholder="email" type="text" rows="1" class="form-control" ng-model="EmployeeModel.Person.ParentEmail"></textarea>
+            </div>
+            <div class="col-sm-12">
+                <label for="officeaddress" class="col-form-label">Office Address</label>
+                <textarea name="officeaddress" id="officeaddress" placeholder="office address" type="text" rows="2" class="form-control" ng-model="EmployeeModel.Person.ParentOfficeAddress"></textarea>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-4">
+                <label for="city" class="col-form-label">City</label>
+                <input name="city" id="city" placeholder="city" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentCity">
+            </div>
+            <div class="col-sm-4">
+                <label for="mobile1" class="col-form-label">
+                    Mobile 1
+                    <a href="#" data-toggle="tooltip" title="Only numbers and spaces are not allowed" data-placement="top"><i class="metismenu-icon pe-7s-info"></i></a>
+                </label>
+                <input name="mobile1" id="mobile1" placeholder="mobile 1" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentMobile1" pattern="^[0-9]*$" ng-pattern-restrict>
+            </div>
+            <div class="col-sm-4">
+                <label for="mobile2" class="col-form-label">
+                    Mobile 2
+                    <a href="#" data-toggle="tooltip" title="Only numbers and spaces are not allowed" data-placement="top"><i class="metismenu-icon pe-7s-info"></i></a>
+                </label>
+                <input name="mobile2" id="mobile2" placeholder="mobile 2" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentMobile2" pattern="^[0-9]*$" ng-pattern-restrict>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-3">
+                <br>
+                <h1 class="card-title fs-15 text-center">Emergency <br> Contact</h1>
+            </div>
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-4">
+                        <label for="name" class="col-form-label">Name</label>
+                        <input name="name" id="name" placeholder="name" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentEmergencyName" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="relation" class="col-form-label">Relation</label>
+                        <input name="relation" id="relation" placeholder="relation" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentEmergencyRelation" pattern="^[A-Za-z ]*$" ng-pattern-restrict>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="mobile" class="col-form-label">
+                            Mobile
+                            <a href="#" data-toggle="tooltip" title="Only numbers and spaces are not allowed" data-placement="top"><i class="metismenu-icon pe-7s-info"></i></a>
+                        </label>
+                        <input name="mobile" id="mobile" placeholder="mobile" type="text" class="form-control" ng-Model="EmployeeModel.Person.ParentEmergencyMobile" pattern="^[0-9]*$" ng-pattern-restrict>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <h3 class="card-title fs-20 text-center">Finances</h3>
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="Salary" class="col-form-label">Salary</label>
+                        <input name="Salary" id="name" placeholder="Salary" type="text" class="form-control" ng-Model="EmployeeModel.MonthlySalary" pattern="^[0-9]*$" ng-pattern-restrict>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-6 offset-sm-4">
+                <button class="btn btn-primary" ng-click="EmployeeUpdate()">Submit</button>
+                <button class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

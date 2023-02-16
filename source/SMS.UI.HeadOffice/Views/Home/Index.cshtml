@@ -1,0 +1,501 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" ng-app="SMSHO">
+<head>
+    <meta charset="UTF-8">
+    <title>Excelence Education System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Styles.Render("~/Content/css")
+    <base href="/">
+</head>
+<body ng-controller="rootCtrl" style="background-color: #e2e5e7;">
+    <growl-notifications></growl-notifications>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-header header-shadow" ng-show="islogin">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>
+            <div class="app-header__content">
+                <div class="app-header-right">
+                    <div class="header-btn-lg pr-0">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                            <img width="42" class="rounded-circle" ng-show="UserImage === ''" src="~/Images/avatar_2x.png" alt="">
+                                            <img width="42" class="rounded-circle" ng-show="UserImage !== ''" src="{{UserImage}}" alt="">
+                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                        </a>
+                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            <button type="button" tabindex="0" ng-click="redirect('userProfile')" class="dropdown-item">Profile</button>
+                                            <div tabindex="-1" class="dropdown-divider"></div>
+                                            <button type="button" tabindex="0" class="dropdown-item" ng-click="logout()">Logout</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="widget-content-left  ml-3 header-user-info">
+                                    <div class="widget-heading">
+                                        {{UserName}}
+                                    </div>
+                                    <div class="widget-subheading">
+                                        Developer
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-main" ng-show="islogin">
+            <div class="app-sidebar sidebar-shadow">
+                <div class="app-header__logo">
+                    <div class="logo-src"></div>
+                    <div class="header__pane ml-auto">
+                        <div>
+                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-header__mobile-menu">
+                    <div>
+                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="app-header__menu">
+                    <span>
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="scrollbar-sidebar">
+                    <div class="app-sidebar__inner">
+                        <ul class="vertical-nav-menu">
+                            <li class="app-sidebar__heading">Dashboards</li>
+                            <li>
+                                <a href="#!/dashboard" class="mm-active">
+                                    <i class="metismenu-icon pe-7s-rocket"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="app-sidebar__heading">Modules</li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    Student
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/studentBase">
+                                            <i class="metismenu-icon"></i>
+                                            Student Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/studentCreate">
+                                            <i class="metismenu-icon">
+                                            </i>Student Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    Employee
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/employeeBase">
+                                            <i class="metismenu-icon"></i>
+                                            Employee Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/employeeCreate">
+                                            <i class="metismenu-icon">
+                                            </i>Employee Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-notebook"></i>
+                                    Designation
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/designationBase">
+                                            <i class="metismenu-icon"></i>
+                                            Designation Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/designationCreate">
+                                            <i class="metismenu-icon">
+                                            </i>Designation Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    Class
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/classBase">
+                                            <i class="metismenu-icon"></i>
+                                            Class Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/classCreate">
+                                            <i class="metismenu-icon">
+                                            </i>
+                                            Class Create
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    Course
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/courseBase">
+                                            <i class="metismenu-icon"></i>
+                                            Course Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/courseCreate">
+                                            <i class="metismenu-icon">
+                                            </i>Course Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-notebook"></i>
+                                    Teacher Diary
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/teacherDiaryBase">
+                                            <i class="metismenu-icon"></i>
+                                            Teacher Diary Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/teacherDiaryCreate">
+                                            <i class="metismenu-icon">
+                                            </i>Teacher Diary Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    Student Diary
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/studentDiaryBase">
+                                            <i class="metismenu-icon"></i>
+                                            Student Diary Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/studentDiaryCreate">
+                                            <i class="metismenu-icon">
+                                            </i>
+                                            Student Diary Create
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    School
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/schoolBase">
+                                            <i class="metismenu-icon"></i>
+                                            School Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/schoolCreate">
+                                            <i class="metismenu-icon">
+                                            </i>School Create
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-note"></i>
+                                    Student Finance
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/studentFinanceBase">
+                                            <i class="metismenu-icon"></i>
+                                            Student Finance Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/studentFinanceCreate">
+                                            <i class="metismenu-icon"></i>
+                                            Student Finance Create
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-note"></i>
+                                    Employee Finance
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/employeeFinanceBase">
+                                            <i class="metismenu-icon"></i>
+                                            Employee Finance Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/employeeFinanceCreate">
+                                            <i class="metismenu-icon"></i>
+                                            Employee Finance Create
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    FinanceType
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/financeTypeBase">
+                                            <i class="metismenu-icon"></i>
+                                            FinanceType Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/financeTypeCreate">
+                                            <i class="metismenu-icon">
+                                            </i>FinanceType Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    Worksheet
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/worksheetBase">
+                                            <i class="metismenu-icon"></i>
+                                            Worksheet Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/worksheetCreate">
+                                            <i class="metismenu-icon">
+                                            </i>Worksheet Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-users"></i>
+                                    Lesson Plan
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/lessonPlanBase">
+                                            <i class="metismenu-icon"></i>
+                                            Lesson Plan Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/lessonPlanCreate">
+                                            <i class="metismenu-icon">
+                                            </i>Lesson Plan Create
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-note2"></i>
+                                    Student Attendance
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/studentAttendanceSheetBase">
+                                            <i class="metismenu-icon"></i>
+                                            Attendance Search
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/studentAttendanceSheet">
+                                            <i class="metismenu-icon"></i>
+                                            Mark Attendance
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-note2"></i>
+                                    Time Table
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/timeTableBase">
+                                            <i class="metismenu-icon"></i>
+                                            Time Table
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/timeTableCreate">
+                                            <i class="metismenu-icon"></i>
+                                            Create Time Table
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pointercollapsable">
+                                    <i class="metismenu-icon pe-7s-note2"></i>
+                                    Requests Management
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/requests-view">
+                                            <i class="metismenu-icon"></i>
+                                            Requests
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="app-sidebar__heading">Settings</li>
+                            <li>
+                                <a href="/#!/userProfile" class="pointerSet">
+                                    <i class="metismenu-icon pe-7s-settings">
+                                    </i>
+                                    User Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-view></div>
+        <div ng-repeat="message in notifications">
+            <growl-notification class="fading" ttl="{{growlmsgtime}}" ng-class="{'growlerror':message.iserror}" ng-if="growlshow">
+                {{message.growlinfo}}
+                <div>
+                    <!-- Manually remove the notification using the $growlNotification.remove() method -->
+                    <a href="" ng-click="$growlNotification.remove()"><span class="cross"></span></a>
+                </div>
+            </growl-notification>
+        </div>
+        <div class="please-wait" ng-class="{'display-load':onload}">
+            <div class="please-wait-container">
+                <div class="please-wait-message">
+                    <img src="~/images/Loader/load1.gif" />
+                    <p>Please wait&hellip;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.RenderFormat(@"<script src="" {0}""></script>", "~/bundles/JsResources")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

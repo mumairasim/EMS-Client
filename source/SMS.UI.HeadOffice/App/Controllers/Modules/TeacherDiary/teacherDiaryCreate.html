@@ -1,0 +1,46 @@
+﻿<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Add Teacher Diary</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <div class="col-sm-4">
+                <label for="name" class="col-form-label">Teacher Diary Name</label>
+                <input name="name" id="name" placeholder="name" type="text" class="form-control" ng-model="TeacherDiaryModel.Name" pattern="^[a-zA-Z0-9 ]*$" ng-pattern-restrict>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <label for="text" class="col-form-label">Diary Text</label>
+                <textarea name="text" id="text" placeholder="enter yor text here" type="text" rows="5" class="form-control" ng-model="TeacherDiaryModel.DairyText" pattern="^[a-zA-Z0-9 ]*$" ng-pattern-restrict></textarea>
+            </div>
+
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-12">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-4">
+                        <label for="dairydate" class="col-form-label">Dairy Date</label>
+                        <input name="dairydate" id="dairydate" placeholder="diarydate" type="date" class="form-control" ng-Model="TeacherDiaryModel.DairyDate">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="employee" class="col-form-label">Employee</label>
+                        <select name="employee" id="employee" class="form-control disabled" ng-Model="TeacherDiaryModel.Employee"
+                                ng-options="Employee.Person.FirstName +' '+ Employee.Person.LastName for Employee in Employees  track by Employee.Id">
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="school" class="col-form-label">School</label>
+                        <select name="school" id="school" class="form-control" ng-Model="TeacherDiaryModel.School"
+                                ng-options="School.Name for School in Schools  track by School.Id">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-6 offset-4">
+                <button class="btn btn-primary" ng-click="TeacherDiaryCreate()">Submit</button>
+                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

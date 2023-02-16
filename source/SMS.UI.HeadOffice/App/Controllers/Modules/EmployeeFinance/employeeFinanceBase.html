@@ -1,0 +1,91 @@
+﻿<div class="container containerBase">
+    <h5 class="card-title fs-35">Search Employee Finances</h5>
+
+    <!--filters-->
+    <div class="col-sm-4">
+        <label for="school" class="col-form-label">Month</label>
+        <select name="school" id="school" class="form-control" ng-Model="Month">
+            <option value="0">-- Ignore --</option>
+            <option value="Jan">January</option>
+            <option value="Feb">February</option>
+            <option value="Mar">March</option>
+            <option value="Apr">April</option>
+            <option value="May">May</option>
+            <option value="Jun">June</option>
+            <option value="Jul">July</option>
+            <option value="Aug">August</option>
+            <option value="Sep">September</option>
+            <option value="Oct">October</option>
+            <option value="Nov">November</option>
+            <option value="Dec">December</option>
+        </select>
+    </div>
+
+    <div class="col-sm-4">
+        <label for="school" class="col-form-label">School</label>
+        <select name="school" id="school" class="form-control" ng-change="GetClasses()" ng-Model="School"
+                ng-options="School.Name for School in Schools  track by School.Id">
+            <option value="?">Choose</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <br />
+            <button class="btn btn-primary" ng-click="GetFinances()">Get Finances</button>
+            <a class="btn btn-primary" href="#!/employeeFinanceCreate">Transfer Salary</a>
+            <br /> <br />
+        </div>
+    </div>
+
+    <!--filters end-->
+    <table ng-if="FinanceList.length > 0" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Designation</th>
+                <th>School</th>
+                <th>Month</th>
+                <th>Year</th>
+                <!--<th>Actions</th>-->
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="odd" ng-repeat="employeeFinance in FinanceList">
+
+                <td>{{employeeFinance.FirstName}}</td>
+                <td>{{employeeFinance.LastName}}</td>
+                <td>{{employeeFinance.Designation}}</td>
+                <td>{{employeeFinance.SchoolName}}</td>
+                <td>{{employeeFinance.SalaryMonth}}</td>
+                <td>{{employeeFinance.SalaryYear}}</td>
+                <!--<td>
+                    <a href="#!/employeeFinanceUpdate?Id={{employeeFinance.Id}}"><i class="fa fa-edit fa-fw"></i> Edit</a>
+                    <a href="" data-toggle="modal" data-target="#confirmationModal" ng-click="ConfirmDelete(employeeFinance.Id)"><i class="fa fa-trash fa-fw"></i> Delete</a>
+                </td>-->
+
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete this employeeFinance.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="NoDelete()">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="EmployeeFinanceDelete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
