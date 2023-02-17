@@ -71,9 +71,7 @@
         <div class="position-relative row form-group">
             <div class="col-sm-4">
                 <label for="school" class="col-form-label">School</label>
-                <select name="school" id="school" class="form-control" ng-Model="EmployeeModel.School"
-                        ng-options="School.Name for School in Schools  track by School.Id">
-                </select>
+                <input class="form-control" disabled value="{{EmployeeModel.School.Name}}" />
             </div>
             <div class="col-sm-4">
                 <label for="designation" class="col-form-label">Designation</label>

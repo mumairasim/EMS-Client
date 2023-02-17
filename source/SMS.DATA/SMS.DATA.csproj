@@ -86,6 +86,10 @@
     <Compile Include="Migrations\202209170608022_SchoolIdToBase.designer.cs">
       <DependentUpon>202209170608022_SchoolIdToBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302171701368_added-isSent.cs" />
+    <Compile Include="Migrations\202302171701368_added-isSent.designer.cs">
+      <DependentUpon>202302171701368_added-isSent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\Assignment.cs" />
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209170608022_SchoolIdToBase.resx">
       <DependentUpon>202209170608022_SchoolIdToBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302171701368_added-isSent.resx">
+      <DependentUpon>202302171701368_added-isSent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

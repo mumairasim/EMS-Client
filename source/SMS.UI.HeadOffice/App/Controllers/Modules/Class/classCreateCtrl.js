@@ -1,6 +1,6 @@
 ﻿SMSHO.controller('classCreateCtrl', ['$scope', 'apiService', '$cookies', function ($scope, apiService, $cookies) {
     'use strict';
-    $scope.Class = {
+    $scope.ClassModel = {
         Name: '',
         School: $scope.School
     };

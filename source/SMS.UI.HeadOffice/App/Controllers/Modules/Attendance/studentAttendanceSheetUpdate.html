@@ -1,24 +1,5 @@
 ﻿<div class="container containerBase">
     <h5 class="card-title fs-35">Update Attendance</h5>
-
-    <!--<div class="position-relative row form-group">
-        <div class="col-sm-4">
-            <label for="school" class="col-form-label">School</label>
-            <select name="school" id="school" class="form-control" ng-change="GetClasses()" ng-Model="School"
-                    ng-options="School.Name for School in Schools  track by School.Id">
-            </select>
-        </div>
-        <div class="col-sm-4">
-            <label for="class" class="col-form-label">Class</label>
-            <select name="class" id="class" class="form-control" ng-change="GetStudents()" ng-Model="Class"
-                    ng-options="Class.ClassName for Class in Classes  track by Class.Id">
-            </select>
-        </div>
-        <div class="col-sm-4">
-            <label for="attendanceDate" class="col-form-label">Date of Attendance</label>
-            <input name="attendanceDate" id="attendanceDate" type="date" class="form-control" ng-Model="StudentAttendanceModel.AttendanceDate" />
-        </div>
-    </div>-->
     <div class="position-relative row form-group">
         <div class="col-sm-4">
             <label class="col-form-label fs-20">Date of Attendance: <b>{{StudentAttendanceModel.AttendanceDate | date}}</b></label>

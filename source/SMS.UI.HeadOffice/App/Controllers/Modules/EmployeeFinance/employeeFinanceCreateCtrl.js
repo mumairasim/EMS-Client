@@ -37,11 +37,6 @@ SMSHO.controller('employeeFinanceCreateCtrl', ['$scope', 'apiService', '$cookies
         var responsedata = apiService.masterget('/api/v1/School/Get');
         responsedata.then(function mySucces(response) {
             $scope.Schools = response.data.Schools;
-            var temp = {
-                Name: '-- Ignore --',
-                Id: '0'
-            }
-            $scope.Schools.unshift(temp);
             $scope.School = $scope.Schools[0];
         },
             function myError(response) {

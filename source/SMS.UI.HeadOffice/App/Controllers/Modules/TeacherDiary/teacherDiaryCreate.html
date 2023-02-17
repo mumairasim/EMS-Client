@@ -29,9 +29,8 @@
                     </div>
                     <div class="col-sm-4">
                         <label for="school" class="col-form-label">School</label>
-                        <select name="school" id="school" class="form-control" ng-Model="TeacherDiaryModel.School"
-                                ng-options="School.Name for School in Schools  track by School.Id">
-                        </select>
+                        <input class="form-control" disabled value="{{TeacherDiaryModel.School.Name}}" />
+
                     </div>
                 </div>
             </div>

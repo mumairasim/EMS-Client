@@ -11,9 +11,7 @@
         </div>
         <div class="col-sm-4">
             <label for="class" class="col-form-label">Class</label>
-            <select name="class" id="class" class="form-control" ng-Model="Class"
-                    ng-options="Class.ClassName for Class in Classes track by Class.Id">
-            </select>
+            <input class="form-control" disabled value="{{Class.School.Name}}" />
         </div>
         <div class="col-sm-4">
             <label for="regno" class="col-form-label">RegNo.</label>

@@ -3,7 +3,7 @@
     <form class="">
         <div class="position-relative row form-group">
             <!--<div class="col-sm-9" style="border-style: solid; border-width: medium; width: 50px; height: 50px; border-color: transparent;">
-        </div>-->
+            </div>-->
             <div class="col-sm-9">
                 <h3 class="card-title fs-20 text-center">Student Information</h3>
                 <div class="position-relative row form-group">
@@ -75,9 +75,7 @@
         <div class="position-relative row form-group">
             <div class="col-sm-4">
                 <label for="school" class="col-form-label">School</label>
-                <select name="school" id="school" class="form-control" ng-Model="StudentModel.School"
-                        ng-options="School.Name for School in Schools  track by School.Id">
-                </select>
+                <input class="form-control" disabled value="{{StudentModel.School.Name}}" />
             </div>
             <div class="col-sm-4">
                 <label for="class" class="col-form-label">Class</label>

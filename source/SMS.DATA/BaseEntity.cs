@@ -9,5 +9,6 @@ namespace SMS.DATA
     public class BaseEntity
     {
         public RequestStatus? ApprovalStatus { get; set; }
+        public bool? IsSent { get; set; } = false;
     }
 }

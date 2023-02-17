@@ -22,16 +22,13 @@
     </div>
     <div class="col-sm-4">
         <label for="school" class="col-form-label">School</label>
-        <select name="school" id="school" class="form-control" ng-change="GetClasses()" ng-Model="School"
-                ng-options="School.Name for School in Schools  track by School.Id">
-            <option value="?">Choose</option>
-        </select>
+        <input class="form-control" disabled value="{{School.Name}}" />
     </div>
-     <div class="col-sm-4">
-    <label for="class" class="col-form-label">Class</label>
-    <select name="class" id="class" class="form-control" ng-change="test()" ng-Model="Class"
-            ng-options="Class.ClassName for Class in Classes  track by Class.Id">
-    </select>
+    <div class="col-sm-4">
+        <label for="class" class="col-form-label">Class</label>
+        <select name="class" id="class" class="form-control" ng-change="test()" ng-Model="Class"
+                ng-options="Class.ClassName for Class in Classes  track by Class.Id">
+        </select>
     </div>
     <div class="col-sm-4">
         <br />
