@@ -3,7 +3,7 @@
 
 SMSHO.controller('registerCtrl', ['$scope', 'apiService', '$cookies', function ($scope, apiService, $cookies) {
     'use strict';
-    $scope.Setisloggedinfalse();
+    //$scope.Setisloggedinfalse();
     $scope.Register = {
         Username: '',
         Email: '',

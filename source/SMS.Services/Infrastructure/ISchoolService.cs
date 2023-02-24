@@ -14,6 +14,8 @@ namespace SMS.Services.Infrastructure
         void Create(DTOSchool dtoSchool);
         void Update(DTOSchool dtoSchool);
         void Delete(Guid? id, string DeletedBy);
+        bool Register(DTOSchool dtoSchool);
+        bool IsAlreadyRegistered();
         #endregion
 
     }

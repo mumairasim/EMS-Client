@@ -68,6 +68,31 @@ namespace SMS.API.Controllers
             _schoolService.Delete(id, DeletedBy);
             return Ok();
         }
+
+        [HttpPost]
+        [Route("Register")]
+        public IHttpActionResult Register()
+        {
+            var httpRequest = HttpContext.Current.Request;
+            var schoolDetail = JsonConvert.DeserializeObject<DTOSchool>(httpRequest.Params["schoolModel"]);
+            if (_schoolService.IsAlreadyRegistered())
+            {
+                return BadRequest("School already registered");
+            }
+            if (_schoolService.Register(schoolDetail))
+            {
+                return Ok();
+            }
+            return BadRequest("Can't register your school please contact head office.");
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("IsSchoolRegistered")]
+
+        public IHttpActionResult IsSchoolRegistered()
+        {
+            return Ok(_schoolService.IsAlreadyRegistered());
+        }
         #endregion
 
     }

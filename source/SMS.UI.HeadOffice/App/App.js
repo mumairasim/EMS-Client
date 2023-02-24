@@ -305,6 +305,11 @@ SMSHO.config(['$routeProvider', '$locationProvider', 'localStorageServiceProvide
             templateUrl: "App/Controllers/Modules/RequestMeta/requestMetaBase.html",
             controller: "requestMetaBaseCtrl"
         })
+        .when("/schoolRegister", {
+            title: "SchoolRegisteration",
+            templateUrl: "App/Controllers/Modules/School/schoolRegister.html",
+            controller: "schoolRegisterCtrl"
+        })
         .otherwise({
             redirectTo: '/'
         });

@@ -1,61 +1,44 @@
 ﻿
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <form class="login100-form containerRegister">
-                <span class="login100-form-title p-b-43">
-                    Register to EES
-                </span>
+<div class="container containerCreate">
+    <h5 class="card-title fs-50 text-center">Register New User</h5>
+    <form class="">
+        <div class="position-relative row form-group">
+            <div class="col-sm-9">
+                <div class="position-relative row form-group">
+                    <div class="col-sm-6">
+                        <label for="location" class="col-form-label">Username</label>
+                        <input name="Username" id="Username" placeholder="Username" type="text" class="form-control" ng-Model="Register.Username">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="name" class="col-form-label">Email</label>
+                        <input name="Email" id="Email" placeholder="Email" type="email" class="form-control" ng-Model="Register.Email">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="name" class="col-form-label">FirstName</label>
+                        <input name="Email" id="FirstName" placeholder="FirstName" type="text" class="form-control" ng-Model="Register.FirstName">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="name" class="col-form-label">LastName</label>
+                        <input name="LastName" id="LastName" placeholder="LastName" type="text" class="form-control" ng-Model="Register.LastName">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="name" class="col-form-label">Password</label>
+                        <input name="Password" id="Password" placeholder="Password" type="text" class="form-control" ng-Model="Register.Password">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="name" class="col-form-label">ConfirmPassword</label>
+                        <input name="ConfirmPassword" id="ConfirmPassword" placeholder="ConfirmPassword" type="text" class="form-control" ng-Model="Register.ConfirmPassword">
+                    </div>
 
-                <div class="wrap-input100 validate-input">
-                    <input class="input100 inputTag" type="text" name="username" ng-model="Register.Username">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100">Username</span>
                 </div>
-
-                <div class="wrap-input100 validate-input">
-                    <input class="input100 inputTag" type="text" name="email" ng-model="Register.Email">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100">Email</span>
-                </div>
-                <div class="wrap-input100 validate-input">
-                    <input class="input100 inputTag" type="text" name="email" ng-model="Register.FirstName">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100">First Name</span>
-                </div>
-                <div class="wrap-input100 validate-input">
-                    <input class="input100 inputTag" type="text" name="email" ng-model="Register.LastName">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100">Last Name</span>
-                </div>
-                <div class="wrap-input100 validate-input">
-                    <input class="input100 inputTag" type="password" name="pass" ng-model="Register.Password">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100">Password</span>
-                </div>
-                <div class="wrap-input100 validate-input">
-                    <input class="input100 inputTag" type="password" name="pass" ng-model="Register.ConfirmPassword">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100">Confirm Password</span>
-                </div>
-
-
-                <div class="container-login100-form-btn">
-                    <a class="login100-form-btn anchorTag" href="#" ng-click="registercall()">
-                        Register
-                    </a>
-                </div>
-
-                <div class="text-center p-t-46 p-b-20">
-                    <a href="/#!/" class="txt1 fs-22">
-                        Log in
-                    </a>
-                </div>
-
-            </form>
-
-            <div class="login100-more" style="background-image: url('images/bg-01.jpg');">
             </div>
         </div>
-    </div>
+        <div class="position-relative row form-group">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="registercall()">Register</button>
+                <button class="btn btn-danger" ng-click="redirect('')">Cancel</button>
+            </div>
+        </div>
+    </form>
 </div>
+

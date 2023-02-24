@@ -63,8 +63,19 @@ SMSHO.controller('loginCtrl', ['$scope', 'apiService', '$cookies', function ($sc
         }
     }
 
-
-
+    $scope.IsSchoolAlreadyRegistered = function () {
+        var url = '/api/v1/School/IsSchoolRegistered';
+        var responsedata = apiService.masterget(url);
+        responsedata.then(function mySucces(response) {
+            if (response.data == true) {
+                $scope.ShowSchoolRegisteration = false;
+            }
+        },
+            function myError(response) {
+                $scope.response = response.data;
+            });
+    }
+    $scope.ShowSchoolRegisteration = true;
     ///SuperAdmin
     $scope.Register = {
         Username: '',
@@ -84,7 +95,7 @@ SMSHO.controller('loginCtrl', ['$scope', 'apiService', '$cookies', function ($sc
             $scope.response = response.data;
         });
     };
-
+    $scope.IsSchoolAlreadyRegistered();
     $scope.registercall();
 }]);
 

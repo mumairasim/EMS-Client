@@ -7,6 +7,11 @@ using SMS.DTOs.DTOs;
 using SMS.Services.Infrastructure;
 using School = SMS.DATA.Models.School;
 using DTOSchool = SMS.DTOs.DTOs.School;
+using System.Net.Http;
+using System.Web.Hosting;
+using System.IO;
+using System.Web.Configuration;
+using Newtonsoft.Json;
 
 namespace SMS.Services.Implementation
 {
@@ -104,6 +109,37 @@ namespace SMS.Services.Implementation
 
             school.DeletedDate = DateTime.UtcNow;
             _repository.Update(_mapper.Map<DTOSchool, School>(school));
+        }
+        public bool IsAlreadyRegistered()
+        {
+            return _repository.Get().Count() > 0;
+        }
+        public bool Register(DTOSchool dtoSchool)
+        {
+            if (dtoSchool != null && dtoSchool.Id != null)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var url = WebConfigurationManager.AppSettings["HeadOfficeAPI"].ToString();
+                    url = url + "api/v1/School/Get?id=" + dtoSchool.Id;
+                    // Make an HTTP GET request to the specified URL
+                    var responseTask = httpClient.GetAsync(url);
+
+                    // Wait for the response to complete and read the response content as a string
+                    var responseContentTask = responseTask.Result.Content.ReadAsStringAsync();
+                    var responseContent = responseContentTask.Result;
+
+                    // Parse the response content into an instance of the ExampleModel class
+                    var schoolModel = JsonConvert.DeserializeObject<DTOSchool>(responseContent);
+                    if (schoolModel != null)
+                    {
+                        _repository.Add(_mapper.Map<DTOSchool, School>(schoolModel));
+                        return true;
+                    }
+                }
+
+            }
+            return false;
         }
         #endregion
 
