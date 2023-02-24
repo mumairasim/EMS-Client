@@ -116,7 +116,7 @@
     <Compile Include="Models\NonDbContextModels\UserInfo.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\School.cs" />
-    <Compile Include="Models\SMS.cs" />
+    <Compile Include="Models\SMSContext.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentAssignment.cs" />
     <Compile Include="Models\StudentAttendance.cs" />

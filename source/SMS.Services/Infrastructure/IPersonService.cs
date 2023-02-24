@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SMS.DATA.Models;
+using System;
 using System.Collections.Generic;
 using DTOPerson = SMS.DTOs.DTOs.Person;
 
@@ -12,6 +13,8 @@ namespace SMS.Services.Infrastructure
         Guid Create(DTOPerson dtoPerson);
         void Update(DTOPerson dtoPerson);
         void Delete(Guid? id);
+
+        bool GetAspNetUserByUsername(string username);
         #endregion
 
     }

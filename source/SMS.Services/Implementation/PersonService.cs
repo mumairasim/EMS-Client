@@ -13,11 +13,13 @@ namespace SMS.Services.Implementation
     public class PersonService : IPersonService
     {
         private readonly IRepository<Person> _repository;
+        private readonly IRepository<AspNetUser> _aspNetUserrepository;
         private IMapper _mapper;
-        public PersonService(IRepository<Person> repository, IMapper mapper)
+        public PersonService(IRepository<Person> repository, IMapper mapper, IRepository<AspNetUser> aspNetUserrepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _aspNetUserrepository = aspNetUserrepository;
         }
         #region SMS Section
         public List<DTOPerson> Get()
@@ -66,6 +68,10 @@ namespace SMS.Services.Implementation
             person.IsDeleted = true;
             person.DeletedDate = DateTime.UtcNow;
             _repository.Update(_mapper.Map<DTOPerson, Person>(person));
+        }
+        public bool GetAspNetUserByUsername(string username)
+        {
+            return _aspNetUserrepository.Get().Any(x => x.UserName.Equals(username));
         }
         #endregion
 

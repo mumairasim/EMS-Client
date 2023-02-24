@@ -62,5 +62,29 @@ SMSHO.controller('loginCtrl', ['$scope', 'apiService', '$cookies', function ($sc
             $scope.logincall();
         }
     }
+
+
+
+    ///SuperAdmin
+    $scope.Register = {
+        Username: '',
+        Email: '',
+        FirstName: '',
+        LastName: '',
+        Password: '',
+        ConfirmPassword: ''
+    };
+    $scope.response = '';
+    $scope.registercall = function () {
+        var data = $scope.Register;
+        var responsedata = apiService.register('/api/Account/Register', data);
+        responsedata.then(function mySucces(response) {
+            $scope.response = response.data;
+        }, function myError(response) {
+            $scope.response = response.data;
+        });
+    };
+
+    $scope.registercall();
 }]);
 

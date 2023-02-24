@@ -2,7 +2,7 @@
 SMSHO.factory('apiService', ['$http', '$cookies', function ($http, $cookies) {
     "use strict";
 
-    var baseUrl = 'http://localhost:44358/';
+    var baseUrl = 'http://localhost:44000/';
 
     function login(url, datatosend) {
         return $http({

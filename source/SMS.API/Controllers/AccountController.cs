@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Configuration;
-using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Microsoft.AspNet.Identity;
@@ -85,12 +82,12 @@ namespace SMS.API.Controllers
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
             var userInfo = _accountService.GetUserInfo(User.Identity.GetUserName());
-         
+
 
             return userInfo;
         }
 
-       
+
         [Route("UpdateUserInfo")]
         public IHttpActionResult UpdateUserInfo()
         {
@@ -372,35 +369,100 @@ namespace SMS.API.Controllers
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var user = new ApplicationUser() { UserName = model.Username, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            var person = new Person
-            {
-                AspNetUserId = Guid.Parse(user.Id),
-                FirstName = model.FirstName,
-                LastName = model.LastName
-            };
-
             try
             {
-                _personService.Create(person);
+                var isSAUserExist = _personService.GetAspNetUserByUsername("admin");
+                if (!isSAUserExist)
+                {
+                    var adminUser = new ApplicationUser() { UserName = "admin", Email = "admin@techLions.com" };
+
+                    IdentityResult adminResult = await UserManager.CreateAsync(adminUser, "Admin@321");
+
+                    if (!adminResult.Succeeded)
+                    {
+                        return GetErrorResult(adminResult);
+                    }
+
+                    var adminPerson = new Person
+                    {
+                        AspNetUserId = Guid.Parse(adminUser.Id),
+                        FirstName = "Super",
+                        LastName = "Admin"
+                    };
+
+                    try
+                    {
+                        _personService.Create(adminPerson);
+                    }
+                    catch (Exception e)
+                    {
+                        return InternalServerError(e);
+                    }
+                }
+                else
+                {
+                    if (!ModelState.IsValid)
+                    {
+                        return BadRequest(ModelState);
+                    }
+
+                    var user = new ApplicationUser() { UserName = model.Username, Email = model.Email };
+
+                    IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+                    if (!result.Succeeded)
+                    {
+                        return GetErrorResult(result);
+                    }
+
+                    var person = new Person
+                    {
+                        AspNetUserId = Guid.Parse(user.Id),
+                        FirstName = model.FirstName,
+                        LastName = model.LastName
+                    };
+
+                    try
+                    {
+                        _personService.Create(person);
+                    }
+                    catch (Exception e)
+                    {
+                        return InternalServerError(e);
+                    }
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return InternalServerError(e);
+                if (ex.Message.Contains("Cannot find the object \"dbo.AspNetUsers\""))
+                {
+                    var adminUser = new ApplicationUser() { UserName = "admin", Email = "admin@techLions.com" };
+
+                    IdentityResult adminResult = await UserManager.CreateAsync(adminUser, "Admin@321");
+
+                    if (!adminResult.Succeeded)
+                    {
+                        return GetErrorResult(adminResult);
+                    }
+
+                    var adminPerson = new Person
+                    {
+                        AspNetUserId = Guid.Parse(adminUser.Id),
+                        FirstName = "Super",
+                        LastName = "Admin"
+                    };
+
+                    try
+                    {
+                        _personService.Create(adminPerson);
+                    }
+                    catch (Exception e)
+                    {
+                        return InternalServerError(e);
+                    }
+                }
             }
+
             return Ok();
         }
 

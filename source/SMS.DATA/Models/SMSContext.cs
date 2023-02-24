@@ -1,12 +1,16 @@
 using SMS.DATA.Infrastructure;
 using System.Data.Entity;
+
+
 namespace SMS.DATA.Models
 {
-    public partial class SMS : DbContext, IDbContext
+    public partial class SMSContext : DbContext, IDbContext
     {
-        public SMS()
+        public SMSContext()
             : base("name=SmsConnection")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<SMSContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SMSContext, Migrations.Configuration>());
         }
         public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
         {

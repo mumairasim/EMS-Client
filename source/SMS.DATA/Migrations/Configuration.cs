@@ -2,14 +2,14 @@
 
 namespace SMS.DATA.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<SMS.DATA.Models.SMS>
+    public sealed class Configuration : DbMigrationsConfiguration<Models.SMSContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Models.SMS context)
+        protected override void Seed(Models.SMSContext context)
         {
             //  This method will be called after migrating to the latest version.
 
