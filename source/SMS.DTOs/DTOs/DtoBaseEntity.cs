@@ -23,7 +23,7 @@ namespace SMS.DTOs.DTOs
         public bool IsClient { get; set; } = false;
         public Guid? SchoolId { get; set; }
         public School School { get; set; }
-        public string ApprovalStatus { get => approvalStatus = IsClient == false ? "GeneratedInSystem" : "Pending"; set => approvalStatus = value; }
+        public string ApprovalStatus { get; set; }
 
     }
 }

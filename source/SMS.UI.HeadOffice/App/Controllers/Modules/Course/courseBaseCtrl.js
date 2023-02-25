@@ -11,7 +11,6 @@ SMSHO.controller('courseBaseCtrl', ['$scope', 'apiService', '$cookies', function
         responsedata.then(function mySucces(response) {
             $scope.courseList = response.data.Courses;
             $scope.Count = response.data.Count;
-            $scope.NextAndPreviousButtonsEnablingAndDisabling();
             $scope.loader(false);
         },
             function myError(response) {

@@ -25,7 +25,7 @@ namespace SMS.DATA.Implementation
                 var template = JsonConvert.DeserializeObject<DomainBaseEnitity>(tempelateJson);
                 _unitOfWork.Context.Set<RequestMeta>().Add(new RequestMeta
                 {
-                    Id= Guid.NewGuid(),
+                    Id = Guid.NewGuid(),
                     ModuleId = template.Id,
                     ModuleName = (Module)Enum.Parse(typeof(Module), entity.GetType().Name),
                     SchoolId = template.SchoolId,
@@ -47,7 +47,7 @@ namespace SMS.DATA.Implementation
 
         public IQueryable<T> Get()
         {
-            return _unitOfWork.Context.Set<T>().Where(x => x.ApprovalStatus == Models.Enums.RequestStatus.Approved || x.ApprovalStatus == Models.Enums.RequestStatus.GeneratedInSystem || x.ApprovalStatus == null);
+            return _unitOfWork.Context.Set<T>().Where(x => x.ApprovalStatus == RequestStatus.Approved || x.ApprovalStatus == RequestStatus.GeneratedInSystem || x.ApprovalStatus == null || x.ApprovalStatus == RequestStatus.Pending);
         }
         public IQueryable<T> GetRaw()
         {

@@ -40,18 +40,9 @@ namespace SMS.Services.Implementation
                     dtoClass.Id = Guid.NewGuid();
                 }
                 HelpingMethodForRelationship(dtoClass);
-                _repository.Add(_mapper.Map<DTOClass, Class>(dtoClass));
-                if (dtoClass.IsClient == true)
-                {
-                    _requestMetaService.Create(new RequestMeta
-                    {
-                        ModuleId = dtoClass.Id,
-                        SchoolId = dtoClass.SchoolId,
-                        ModuleName = Module.Class,
-                        ApprovalStatus = DATA.Models.Enums.RequestStatus.Pending,
-                        Type = DATA.Models.Enums.RequestType.Create
-                    });
-                }
+                var dbClass = _mapper.Map<DTOClass, Class>(dtoClass);
+                dbClass.ApprovalStatus = DATA.Models.Enums.RequestStatus.Pending;
+                _repository.Add(dbClass);
                 return PrepareSuccessResponse("Created", "Instance Created Successfully");
 
             }

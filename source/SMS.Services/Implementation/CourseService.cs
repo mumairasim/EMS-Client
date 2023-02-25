@@ -54,18 +54,10 @@ namespace SMS.Services.Implementation
                 }
                 dtoCourse.SchoolId = dtoCourse.School.Id;
                 dtoCourse.School = null;
-                _repository.Add(_mapper.Map<DTOCourse, Course>(dtoCourse));
-                if (dtoCourse.IsClient == true)
-                {
-                    _requestMetaService.Create(new RequestMeta
-                    {
-                        ModuleId = dtoCourse.Id,
-                        SchoolId = dtoCourse.SchoolId,
-                        ModuleName = Module.Course,
-                        ApprovalStatus = DATA.Models.Enums.RequestStatus.Pending,
-                        Type = DATA.Models.Enums.RequestType.Create
-                    });
-                }
+                var dbCourse = _mapper.Map<DTOCourse, Course>(dtoCourse);
+                dbCourse.ApprovalStatus = DATA.Models.Enums.RequestStatus.Pending;
+                _repository.Add(dbCourse);
+
                 return PrepareSuccessResponse("Created", "Instance Created Successfully");
 
             }

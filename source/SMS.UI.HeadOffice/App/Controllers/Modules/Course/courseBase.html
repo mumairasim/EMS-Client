@@ -19,6 +19,7 @@
                 <th>Course Code</th>
                 <th>Course Name</th>
                 <th>School Name</th>
+                <th>Approval Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td>{{course.CourseCode}}</td>
                 <td>{{course.CourseName}}</td>
                 <td>{{course.School.Name}}</td>
+                <td><span  [ngClass]="{'label-warning': course.ApprovalStatus == 'Pending', 'label-success' : course.ApprovalStatus == 'Approved' }" class="label">{{course.ApprovalStatus}}</span></td>
                 <td>
                     <a href="#!/courseUpdate?Id={{course.Id}}"><i class="fa fa-edit fa-fw"></i> Edit</a>
                     <a href="" data-toggle="modal" data-target="#confirmationModal" ng-click="ConfirmDelete(course.Id)"><i class="fa fa-trash fa-fw"></i> Delete</a>
